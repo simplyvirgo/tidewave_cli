@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"strings"
@@ -55,6 +56,10 @@ func CallTool(serverURL, toolName string, arguments map[string]any) (string, boo
 	}
 	defer resp.Body.Close()
 
+	if resp.StatusCode != http.StatusOK {
+		return "", false, fmt.Errorf("server returned HTTP %d", resp.StatusCode)
+	}
+
 	var rpcResp struct {
 		Error *struct {
 			Code    int    `json:"code"`
@@ -69,7 +74,8 @@ func CallTool(serverURL, toolName string, arguments map[string]any) (string, boo
 		} `json:"result"`
 	}
 
-	if err := json.NewDecoder(resp.Body).Decode(&rpcResp); err != nil {
+	limited := io.LimitReader(resp.Body, 10*1024*1024) // 10 MB max
+	if err := json.NewDecoder(limited).Decode(&rpcResp); err != nil {
 		return "", false, fmt.Errorf("decoding response: %w", err)
 	}
 
