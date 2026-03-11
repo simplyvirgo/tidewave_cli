@@ -1,6 +1,6 @@
 ---
 name: tidewave-cli-usage
-description: CRITICAL for ALL Elixir/Phoenix/Ash development work. Invoke when working with Elixir code, Ecto schemas, Ash resources, Phoenix applications, or databases in Elixir projects. Provides CLI tools for live code evaluation (via IEx), instant module navigation, direct SQL execution, schema introspection, and documentation access. Tidewave provides superior alternatives to bash/grep/read for Elixir tasks.
+description: CRITICAL for ALL Elixir/Phoenix/Ash development work. Invoke when working with Elixir code, Ecto schemas, Ash resources, Phoenix applications, or databases in Elixir projects. Provides CLI tools for live code evaluation (via IEx), instant module navigation, direct SQL execution, schema introspection, and documentation access.
 ---
 
 ## Tidewave CLI — Elixir Runtime Tools

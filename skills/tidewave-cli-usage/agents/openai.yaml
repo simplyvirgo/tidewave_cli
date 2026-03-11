@@ -1,0 +1,7 @@
+interface:
+  display_name: "Tidewave CLI Usage"
+  short_description: "Use tidewave_cli for Elixir runtime introspection"
+  default_prompt: "Use $tidewave-cli-usage to inspect a running Elixir app with tidewave_cli."
+
+policy:
+  allow_implicit_invocation: true

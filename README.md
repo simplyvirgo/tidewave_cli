@@ -30,6 +30,19 @@ cd tidewave_cli
 go build -o tidewave_cli
 ```
 
+## Codex Skill Install (symlink workflow)
+
+To keep Codex skills in sync with repository updates, symlink the repo's `skills/` directory:
+
+```sh
+mkdir -p ~/.codex/skills
+ln -s ~/.codex/tidewave_cli/skills ~/.codex/skills/tidewave
+```
+
+Then restart Codex so it refreshes skill discovery.
+
+Detailed steps: [`.codex/INSTALL.md`](.codex/INSTALL.md).
+
 ## Usage
 
 ```
@@ -92,14 +105,15 @@ tidewave_cli --port 4001 eval '1 + 1'
 TIDEWAVE_PORT=4001 tidewave_cli eval '1 + 1'
 ```
 
-## Claude Code skill
+## Skill Contents
 
-The included `SKILL.md` can be used as a [Claude Code skill](https://docs.anthropic.com/en/docs/claude-code/skills) to teach coding agents when and how to use the CLI. Copy or symlink it:
+This repository ships the skill at:
 
-```sh
-mkdir -p ~/.claude/skills/tidewave-cli-usage
-cp SKILL.md ~/.claude/skills/tidewave-cli-usage/
-```
+- `skills/tidewave-cli-usage/SKILL.md`
+
+Optional UI metadata is in:
+
+- `skills/tidewave-cli-usage/agents/openai.yaml`
 
 ## Requirements
 
